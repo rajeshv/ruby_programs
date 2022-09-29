@@ -1,33 +1,24 @@
 require "byebug"
-# hello = {}
-# longest = 0
-# longest_sub = ""
-# word.chars.each_with_index do |ret, i|
-#   if last_indx = hello[ret]
-#     m = i - last_indx
-#     if longest < m
-#       longest = m
-#       longest_sub = word[last_indx..i]
-#     end
-#   end
-#   hello[ret] = i
-# end
 
-# EKSFORG
+def longest_sub_string_using_index(word)
+  hello = {}
+  longest = 0
+  longest_sub = ""
+  word.chars.each_with_index do |ret, i|
+    if last_indx = hello[ret]
+      m = i - last_indx
+      if longest < m
+        longest = m
+        longest_sub = word[last_indx..i]
+      end
+    end
+    hello[ret] = i
+  end
+ [longest, longest_sub]
+end
 
-
-
-# hsh = {}
-# longest = 0
-# longest_sub = ""
-# word.chars.each_with_index do |ret, i|
-#   if hsh[ret]
-#     hsh[ret] = i - hsh[ret]
-#   else
-#     hsh[ret] = i
-#   end
-#   longest = hsh[ret] if hsh[ret] > longest
-# end
+p longest_sub_string_using_index("Mississippi")
+p longest_sub_string_using_index("longest_sub_string")
 
 def longest_sub_string_using_hash(word)
   hsh = {}
