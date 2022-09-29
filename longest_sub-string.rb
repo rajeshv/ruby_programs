@@ -1,18 +1,20 @@
 require "byebug"
 
 def longest_sub_string_using_index(word)
-  hello = {}
+  hsh = {}
   longest = 0
   longest_sub = ""
   word.chars.each_with_index do |ret, i|
-    if last_indx = hello[ret]
+    if last_indx = hsh[ret]
       m = i - last_indx
       if longest < m
         longest = m
         longest_sub = word[last_indx..i]
       end
+    else
+      hsh={}  
     end
-    hello[ret] = i
+    hsh[ret] = i
   end
  [longest, longest_sub]
 end
@@ -41,7 +43,7 @@ p longest_sub_string_using_hash("longest_sub_string")
 def longest_sub_string_using_hash_and_margin(word)
   return if !word.is_a?(String) && word.is_empty?
   hsh = {}
-  longest = 1
+  longest = 0
   longest_sub = ""
   margin = 0
   word.chars.each_with_index do |ret, i|
